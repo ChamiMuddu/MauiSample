@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:listview="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local ="clr-namespace:SyncfusionMAUIApp1"
+             x:Class="SyncfusionMAUIApp1.ProductCategory"
+             Title="ProductCategory">
+
+    <ContentPage.BindingContext>
+        <local:LinearLayoutViewModel></local:LinearLayoutViewModel>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <listview:SfListView x:Name="listView" 
+                             Grid.Row="1"
+                             DragStartMode="OnDragIndicator, OnHold"
+                             ItemDragging="listView_ItemDragging" 
+                            ItemSize="94"
+                             ItemsSource="{Binding ListCategoryDetails}"
+                             ScrollBarVisibility="Always"
+                             SelectionMode="None"
+                             >
+            <listview:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="94"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0"
+                               Grid.Column="0"
+                              Padding="0"
+                               CornerRadius="4"
+                               HasShadow="False"
+                               HeightRequest="72"
+                               HorizontalOptions="Center"
+                               IsClippedToBounds="True"
+                               WidthRequest="72"
+                               >
+                            <Image Grid.Row="0"
+                                   Grid.Column="0"
+                                   Aspect="Fill"
+                                   HeightRequest="72"
+                                   HorizontalOptions="Center"
+                                   Source="{Binding CategoryImage}"
+                                   VerticalOptions="FillAndExpand"
+                                   WidthRequest="72"
+                                   >
+                                
+                            </Image>
+                        </Frame>
+                        <Grid Grid.Row="0"
+                              Grid.Column="1"
+                              VerticalOptions="Center"
+                              >
+                            <Grid Grid.Row="0"
+                                  Grid.Column="1"
+                                  VerticalOptions="Center"
+                                  >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition   Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       CharacterSpacing="0.1"
+                                       FontFamily="Roboto-Medium"
+                                       LineBreakMode="WordWrap"
+                                       Text="{Binding CategoryName}"
+                                       TextColor="#DE000000"></Label>
+                                <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Margin="0,4,0,0"
+                                       CharacterSpacing="0.1"
+                                       FontFamily="Roboto-Regular"
+                                       FontSize="14"
+                                       LineBreakMode="WordWrap"
+                                       Text="{Binding CategoryDescription}"
+                                       TextColor="#666666"
+                                    >
+                                  
+                                </Label>
+                                <listview:DragIndicatorView></listview:DragIndicatorView>
+                            </Grid>
+                            <BoxView Grid.Row="1"
+                                     Grid.Column="1"
+                                     BackgroundColor="Red"
+                                     HeightRequest="1"
+                                     VerticalOptions="End"></BoxView>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </listview:SfListView.ItemTemplate>
+            
+        </listview:SfListView>
+    </Grid>
+
+</ContentPage>

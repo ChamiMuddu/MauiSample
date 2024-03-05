@@ -8,7 +8,8 @@
 
     
 
-<ShellContent Title = "Autocomplete" ContentTemplate = "{DataTemplate local:AutocompleteFeatures}" Route ="AutocompleteFeatures" /> 
+<!--<ShellContent Title = "Autocomplete" ContentTemplate = "{DataTemplate local:AutocompleteFeatures}" Route ="AutocompleteFeatures" />-->
+    <ShellContent Title = "ProductCategory" ContentTemplate = "{DataTemplate local:ProductCategory}" Route ="ProductCategory" />
 
 
 </Shell>
