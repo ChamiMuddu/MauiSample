@@ -11,7 +11,11 @@ public partial class ProductCategory : ContentPage
 
     private void listView_ItemDragging(object sender, Syncfusion.Maui.ListView.ItemDraggingEventArgs e)
     {
-
+        if(e.Action == Syncfusion.Maui.ListView.DragAction.Drop)
+        {
+            // This is just for demo -- optional code
+            this.DisplayIndex.Text = String.Format("Item dragged from position {0} to {1}", e.OldIndex, e.NewIndex);
+        }
     }
 }
 
@@ -28,73 +32,73 @@ public class CategoryRepository
 	{ }
 	internal ObservableCollection<ListCategoryInfo> GetListCategory()
 	{
-		var listCategoryInfo =  new ObservableCollection<ListCategoryInfo>()
-		{
-			 new ListCategoryInfo()
-			 {
-				  CategoryName = "Fashion",
-				  CategoryDescription = "This is to view Fashionable items",
-				  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/cam-1709548483657.jpg?updatedAt=1709548490146"
+        var listCategoryInfo = new ObservableCollection<ListCategoryInfo>()
+        {
+             new ListCategoryInfo()
+             {
+                  CategoryName = "Fashion",
+                  CategoryDescription = "This is to view Fashionable items Clothing describes the material and the technical garment",
+				  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/fashion.png?updatedAt=1710323646967"
              },
 			 new ListCategoryInfo()
 			 {
                   CategoryName = "Books",
-                  CategoryDescription = "This is to view Book items",
-                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/cam-1709548461640.jpg?updatedAt=1709548490077"
+                  CategoryDescription = "This is to view Book items Clothing describes the material and the technical garment",
+                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/books.png?updatedAt=1710323719470"
              },
 			 new ListCategoryInfo()
 			 {
                   CategoryName = "Electronics",
-                  CategoryDescription = "This is to view Electronic items",
-                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/cam-1709548471905.jpg?updatedAt=1709548490072"
+                  CategoryDescription = "This is to view Electronic items Clothing describes the material and the technical garment",
+                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/electronics.png?updatedAt=1710323769302"
              },
               new ListCategoryInfo()
              {
                   CategoryName = "Watches",
-                  CategoryDescription = "This is to view Watch items",
-                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/cam-1709548452105.jpg?updatedAt=1709548489851"
+                  CategoryDescription = "This is to view Watch items Clothing describes the material and the technical garment",
+                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/watches.png?updatedAt=1710323803897"
              },
              new ListCategoryInfo()
              {
                   CategoryName = "Toys",
-                  CategoryDescription = "This is to view kid items",
-                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/cam-1709548435521.jpg?updatedAt=1709548442006"
+                  CategoryDescription = "This is to view kid items Clothing describes the material and the technical garment",
+                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/toys.png?updatedAt=1710323868971"
              },
              new ListCategoryInfo()
              {
                   CategoryName = "Furniture",
-                  CategoryDescription = "This is to view furnitue items",
-                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/cam-1709548411170.jpg?updatedAt=1709548418363"
+                  CategoryDescription = "This is to view furnitue items Clothing describes the material and the technical garment",
+                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/furniture.png?updatedAt=1710323868969"
              },
               new ListCategoryInfo()
              {
                   CategoryName = "Books",
-                  CategoryDescription = "This is to view Book items",
-                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/cam-1709548461640.jpg?updatedAt=1709548490077"
+                  CategoryDescription = "This is to view Book items Clothing describes the material and the technical garment",
+                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/books.png?updatedAt=1710323719470"
              },
              new ListCategoryInfo()
              {
                   CategoryName = "Electronics",
-                  CategoryDescription = "This is to view Electronic items",
-                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/cam-1709548471905.jpg?updatedAt=1709548490072"
+                  CategoryDescription = "This is to view Electronic items Clothing describes the material and the technical garment",
+                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/electronics.png?updatedAt=1710323769302"
              },
               new ListCategoryInfo()
              {
                   CategoryName = "Watches",
-                  CategoryDescription = "This is to view Watch items",
-                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/cam-1709548452105.jpg?updatedAt=1709548489851"
+                  CategoryDescription = "This is to view Watch items Clothing describes the material and the technical garment",
+                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/watches.png?updatedAt=1710323803897"
              },
              new ListCategoryInfo()
              {
                   CategoryName = "Toys",
-                  CategoryDescription = "This is to view kid items",
-                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/cam-1709548435521.jpg?updatedAt=1709548442006"
+                  CategoryDescription = "This is to view kid items Clothing describes the material and the technical garment",
+                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/toys.png?updatedAt=1710323868971"
              },
              new ListCategoryInfo()
              {
                   CategoryName = "Furniture",
-                  CategoryDescription = "This is to view furnitue items",
-                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/cam-1709548411170.jpg?updatedAt=1709548418363"
+                  CategoryDescription = "This is to view furnitue items Clothing describes the material and the technical garment",
+                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/furniture.png?updatedAt=1710323868969"
              }
         };
 		
@@ -111,10 +115,29 @@ public class LinearLayoutViewModel
     }
 
     public ObservableCollection<ListCategoryInfo> ListCategoryDetails { get; set; }
+    public Command ArchiveCommand { get; set; }
+    public Command DeleteCommand { get; set; }
 
     private void GenerateSource()
     {
         CategoryRepository repository = new CategoryRepository();
         ListCategoryDetails =  repository.GetListCategory();
+        ArchiveCommand = new Command(Archive);
+        DeleteCommand = new Command(Delete);
+    }
+
+    private ListCategoryInfo? listViewItem;
+    private void   Archive(object item)
+    {
+        listViewItem = (ListCategoryInfo)item;
+        var currentCollection = this.ListCategoryDetails;
+        currentCollection.Remove(listViewItem);
+    }
+
+    private void Delete(object item)
+    {
+        listViewItem = (ListCategoryInfo)item;
+        var currentCollection = this.ListCategoryDetails;
+        currentCollection.Remove(listViewItem);
     }
 }

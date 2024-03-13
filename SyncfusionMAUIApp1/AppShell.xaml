@@ -6,8 +6,19 @@
     xmlns:local="clr-namespace:SyncfusionMAUIApp1"
     Shell.FlyoutBehavior="Flyout">
 
-    
+    <FlyoutItem Title="Main Categories" >
+        <Tab>
+            <ShellContent Title="Categories" ContentTemplate="{DataTemplate local:MainCategory}" Route="MainCategory"></ShellContent>
+        </Tab>
 
+    </FlyoutItem>
+
+    <FlyoutItem Title="Product Categories" >
+        <Tab>
+            <ShellContent Title="Categories" ContentTemplate="{DataTemplate local:ProductCategory}" Route="ProductCategory"></ShellContent>
+        </Tab>
+        
+    </FlyoutItem>
 <!--<ShellContent Title = "Autocomplete" ContentTemplate = "{DataTemplate local:AutocompleteFeatures}" Route ="AutocompleteFeatures" />-->
     <ShellContent Title = "ProductCategory" ContentTemplate = "{DataTemplate local:ProductCategory}" Route ="ProductCategory" />
 

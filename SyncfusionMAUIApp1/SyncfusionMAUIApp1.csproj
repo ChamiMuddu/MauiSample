@@ -73,6 +73,15 @@
          </ItemGroup>
 	
 	 <ItemGroup>
+	   <Compile Update="MainCategory.xaml.cs">
+	     <DependentUpon>MainCategory.xaml</DependentUpon>
+	   </Compile>
+	 </ItemGroup>
+	
+	 <ItemGroup>
+	   <MauiXaml Update="MainCategory.xaml">
+	     <Generator>MSBuild:Compile</Generator>
+	   </MauiXaml>
 	   <MauiXaml Update="ProductCategory.xaml">
 	     <Generator>MSBuild:Compile</Generator>
 	   </MauiXaml>
