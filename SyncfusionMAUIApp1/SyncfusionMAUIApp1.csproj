@@ -79,10 +79,16 @@
 	 </ItemGroup>
 	
 	 <ItemGroup>
+	   <MauiXaml Update="Source\View\EmployeeList.xaml">
+	     <Generator>MSBuild:Compile</Generator>
+	   </MauiXaml>
 	   <MauiXaml Update="MainCategory.xaml">
 	     <Generator>MSBuild:Compile</Generator>
 	   </MauiXaml>
 	   <MauiXaml Update="ProductCategory.xaml">
+	     <Generator>MSBuild:Compile</Generator>
+	   </MauiXaml>
+	   <MauiXaml Update="ProductSubCategoryHorizontal.xaml">
 	     <Generator>MSBuild:Compile</Generator>
 	   </MauiXaml>
 	 </ItemGroup>

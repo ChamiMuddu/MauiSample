@@ -36,7 +36,7 @@ xmlns:listview="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.
                                Grid.Column="0"
                               Padding="0"
                                CornerRadius="4"
-                               HasShadow="False"
+                               HasShadow="False"    
                                HeightRequest="200"
                                HorizontalOptions="Center"
                                IsClippedToBounds="True"

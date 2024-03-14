@@ -36,8 +36,14 @@ public class CategoryRepository
         {
              new ListCategoryInfo()
              {
+                  CategoryName = "Mobiles",
+                  CategoryDescription = "This is to view Electronic items Clothing describes the material and the technical garment",
+                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/electronics.png?updatedAt=1710323769302"
+             },
+             new ListCategoryInfo()
+             {
                   CategoryName = "Fashion",
-                  CategoryDescription = "This is to view Fashionable items Clothing describes the material and the technical garment",
+                  CategoryDescription = "This is to view Fashion items Clothing describes the material and the technical garment",
 				  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/fashion.png?updatedAt=1710323646967"
              },
 			 new ListCategoryInfo()
@@ -46,12 +52,7 @@ public class CategoryRepository
                   CategoryDescription = "This is to view Book items Clothing describes the material and the technical garment",
                   CategoryImage = "https://ik.imagekit.io/u4aiacsbos/books.png?updatedAt=1710323719470"
              },
-			 new ListCategoryInfo()
-			 {
-                  CategoryName = "Electronics",
-                  CategoryDescription = "This is to view Electronic items Clothing describes the material and the technical garment",
-                  CategoryImage = "https://ik.imagekit.io/u4aiacsbos/electronics.png?updatedAt=1710323769302"
-             },
+			
               new ListCategoryInfo()
              {
                   CategoryName = "Watches",
@@ -117,6 +118,8 @@ public class LinearLayoutViewModel
     public ObservableCollection<ListCategoryInfo> ListCategoryDetails { get; set; }
     public Command ArchiveCommand { get; set; }
     public Command DeleteCommand { get; set; }
+    public Command TapCommand { get; set; }
+    
 
     private void GenerateSource()
     {
@@ -124,6 +127,7 @@ public class LinearLayoutViewModel
         ListCategoryDetails =  repository.GetListCategory();
         ArchiveCommand = new Command(Archive);
         DeleteCommand = new Command(Delete);
+        TapCommand = new Command(Tapped);
     }
 
     private ListCategoryInfo? listViewItem;
@@ -139,5 +143,11 @@ public class LinearLayoutViewModel
         listViewItem = (ListCategoryInfo)item;
         var currentCollection = this.ListCategoryDetails;
         currentCollection.Remove(listViewItem);
+    }
+
+    private async void Tapped(object obj)
+    {
+        var navigationParameter = new Dictionary<string, object>() { { "category", obj } };
+        await Shell.Current.GoToAsync("//ProductSubCategoryHorizontal", navigationParameter);
     }
 }

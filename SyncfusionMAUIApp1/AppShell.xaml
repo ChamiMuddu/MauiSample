@@ -19,8 +19,11 @@
         </Tab>
         
     </FlyoutItem>
-<!--<ShellContent Title = "Autocomplete" ContentTemplate = "{DataTemplate local:AutocompleteFeatures}" Route ="AutocompleteFeatures" />-->
-    <ShellContent Title = "ProductCategory" ContentTemplate = "{DataTemplate local:ProductCategory}" Route ="ProductCategory" />
+    <FlyoutItem Title="Product Categories" >
+        <Tab>
+            <ShellContent Title="Categories" ContentTemplate="{DataTemplate local:ProductSubCategoryHorizontal}" Route="ProductSubCategoryHorizontal"></ShellContent>
+        </Tab>
 
+    </FlyoutItem>
 
 </Shell>

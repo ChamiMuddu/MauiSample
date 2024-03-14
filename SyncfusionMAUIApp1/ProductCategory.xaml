@@ -37,6 +37,10 @@ xmlns:listview="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.
             <listview:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.TapCommand, Source={x:Reference listView}}"
+                                                  CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="1"/>
@@ -131,7 +135,7 @@ xmlns:listview="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.
                     <Grid>
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Path=BindingContext.ArchiveCommand, Source={x:Reference listView}}"
-                               CommandParameter="{Binding}" ></TapGestureRecognizer>
+                               CommandParameter="{Binding .}" ></TapGestureRecognizer>
                         </Grid.GestureRecognizers>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
